@@ -1,0 +1,29 @@
+{
+  "name": "ditt0-markdown",
+  "version": "1.0.6",
+  "description": "Markdown with YAML front matter middleware for Ditto",
+  "main": "index.js",
+	"scripts": {
+		"test": "jasmine"
+  },
+  "dependencies": {
+    "async": "^2.6.0",
+    "ditt0": "pimbrouwers/ditto",
+    "front-matter": "^2.3.0",
+    "marked": "^0.3.12",
+    "js-yaml": "^3.10.0"
+  },
+	"devDependencies": {
+		"jasmine": "^2.8.0"
+	},
+  "author": "Pim Brouwers",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pimbrouwers/ditto-markdown.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pimbrouwers/ditto-markdown/issues"
+  },
+  "homepage": "https://github.com/pimbrouwers/ditto-markdown#readme"
+}
