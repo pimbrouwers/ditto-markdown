@@ -8,12 +8,12 @@
   },
   "dependencies": {
     "async": "^2.6.0",
-    "ditt0": "pimbrouwers/ditto",
     "front-matter": "^2.3.0",
     "marked": "^0.3.12",
     "js-yaml": "^3.10.0"
   },
 	"devDependencies": {
+    "ditt0":"^1.0.0",
 		"jasmine": "^2.8.0"
 	},
   "author": "Pim Brouwers",
