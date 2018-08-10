@@ -7,9 +7,11 @@ const
 /*
  * Ditto Markdown with YAML Front Matter Middleware
  */
-module.exports = DittoMarkdown;
+module.exports = dittoMarkdown;
 
-function DittoMarkdown() {};
+function dittoMarkdown() {
+  return this.run;  
+};
 
 /**
  * Ditto Markdown with YAML Front Matter parsing middleware
@@ -17,7 +19,7 @@ function DittoMarkdown() {};
  * @param {Object.<Ditto>} Ditto 
  * @param {Function} done 
  */
-DittoMarkdown.prototype.run = function(files, Ditto, done) {
+dittoMarkdown.prototype.run = function(files, Ditto, done) {
   async.each(files, this.parseFile, function(err) {
     done(err, files);
   })
@@ -27,7 +29,7 @@ DittoMarkdown.prototype.run = function(files, Ditto, done) {
  * Safely parse node file buffer containing markdown and option YAML front matter
  * @param {Array} file 
  */
-DittoMarkdown.prototype.parseFile = function(file, callback) {
+dittoMarkdown.prototype.parseFile = function(file, callback) {
   let fileContentStr = file.content.toString('utf8');
 
   //parse the yaml front matter, and raw markdown
