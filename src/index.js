@@ -10,19 +10,11 @@ const
 module.exports = dittoMarkdown;
 
 function dittoMarkdown() {
-  return this.run;  
-};
-
-/**
- * Ditto Markdown with YAML Front Matter parsing middleware
- * @param {Array.<Object.<DittoFile>>} files 
- * @param {Object.<Ditto>} Ditto 
- * @param {Function} done 
- */
-dittoMarkdown.prototype.run = function(files, Ditto, done) {
-  async.each(files, this.parseFile, function(err) {
-    done(err, files);
-  })
+  return function (files, Ditto, done) {
+    async.each(files, this.parseFile, function (err) {
+      done(err, files);
+    })
+  };
 };
 
 /**
