@@ -25,15 +25,29 @@ DittoMarkdown.prototype.run = function(files, Ditto, done) {
 
 /**
  * Safely parse node file buffer containing markdown and option YAML front matter
- * @param {Array} fileBuffer 
+ * @param {Array} file 
  */
-DittoMarkdown.prototype.parseFile = function(fileBuffer, callback) {
-  let fileContentStr = fileBuffer.content.toString('utf8');
+DittoMarkdown.prototype.parseFile = function(file, callback) {
+  let fileContentStr = file.content.toString('utf8');
 
+  //parse the yaml front matter, and raw markdown
   let content = frontMatter(fileContentStr);
 
-  fileBuffer.content = content.attributes;
-  fileBuffer.content.body = marked(content.body);
+  //assign yaml attributes to the content property of the file
+  file.content = content.attributes;
+
+  //parse raw markdown into html
+  file.content.body = marked(content.body);
+
+  //is there a permalink?
+  if(file.content.permalink)
+  {
+    //make sure this file doesn't get ridden to a directory
+    file.path.dir = '';
+
+    //rename based on permalink
+    file.path.name = file.content.permalink;
+  }
 
   callback(null);
 };
