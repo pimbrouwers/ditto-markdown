@@ -39,15 +39,5 @@ DittoMarkdown.prototype.parseFile = function(file, callback) {
   //parse raw markdown into html
   file.content.body = marked(content.body);
 
-  //is there a permalink?
-  if(file.content.permalink)
-  {
-    //make sure this file doesn't get ridden to a directory
-    file.path.dir = '';
-
-    //rename based on permalink
-    file.path.name = file.content.permalink;
-  }
-
   callback(null);
 };
